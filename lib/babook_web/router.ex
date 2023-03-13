@@ -23,6 +23,10 @@ defmodule BabookWeb.Router do
 		live "/transactions/new", TransactionLive.Index, :new
 		live "/transactions/:id/edit", TransactionLive.Index, :edit
 
+		live "/accounts", AccountLive.Index, :index
+		live "/accounts/new", AccountLive.Index, :new
+		live "/accounts/:id/edit", AccountLive.Index, :edit
+
 		live "/transactions/:id", TransactionLive.Show, :show
 		live "/transactions/:id/show/edit", TransactionLive.Show, :edi
 		

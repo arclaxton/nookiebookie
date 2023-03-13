@@ -24,7 +24,7 @@
 			</section>
 		</header>
 		<div id="sidebar">
-			<%= render(BabookWeb.PageView, "account_sidebar.html")%>
+			<%= live_render(@conn, BabookWeb.AccountLive.Sidebar) %>
 		</div>
 		<div id="inner_content">
 			<%= @inner_content %>

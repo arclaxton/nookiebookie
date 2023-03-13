@@ -1,3 +1,5 @@
+import Phoenix.Component
+
 defmodule BabookWeb.LayoutView do
 	use BabookWeb, :view
 
