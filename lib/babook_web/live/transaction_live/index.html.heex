@@ -37,9 +37,8 @@
 				<td><%= transaction.budget_allocation %></td>
 
 				<td>
-					<span><%= live_redirect "Show", to: Routes.transaction_show_path(@socket, :show, transaction) %></span>
-					<span><%= live_patch "Edit", to: Routes.transaction_index_path(@socket, :edit, transaction) %></span>
-					<span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: transaction.id, data: [confirm: "Are you sure?"] %></span>
+					<span><%= live_patch "🖉", to: Routes.transaction_index_path(@socket, :edit, transaction), class: "test" %></span>
+					<span><%= link "❌", to: "#", phx_click: "delete", phx_value_id: transaction.id, data: [confirm: "Are you sure?"] %></span>
 				</td>
 			</tr>
 		<% end %>
@@ -47,3 +46,11 @@
 </table>
 
 <span><%= live_patch "New Transaction", to: Routes.transaction_index_path(@socket, :new) %></span>
+<style>
+	#transactions {
+		background-color: var(--nord1);
+	}
+	main.container {
+		margin: 0 !important;
+	}
+</style>

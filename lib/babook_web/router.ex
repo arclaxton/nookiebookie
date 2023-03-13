@@ -19,7 +19,7 @@ defmodule BabookWeb.Router do
 
 		get "/", PageController, :index
 
-				live "/transactions", TransactionLive.Index, :index
+		live "/transactions", TransactionLive.Index, :index
 		live "/transactions/new", TransactionLive.Index, :new
 		live "/transactions/:id/edit", TransactionLive.Index, :edit
 
