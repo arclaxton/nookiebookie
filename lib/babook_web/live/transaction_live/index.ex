@@ -5,8 +5,11 @@ defmodule BabookWeb.TransactionLive.Index do
 	alias Phoenix.PubSub
 	alias Babook.Store.Transaction
 
+	@topic "transaction"
+
 	@impl true
 	def mount(_params, _session, socket) do
+		BabookWeb.Endpoint.subscribe(@topic)
 		{:ok, assign(socket, :transactions, list_transactions())}
 	end
 
@@ -37,6 +40,15 @@ defmodule BabookWeb.TransactionLive.Index do
 	def handle_event("delete", %{"id" => id}, socket) do
 		transaction = Store.get_transaction!(id)
 		{:ok, _} = Store.delete_transaction(transaction)
+		BabookWeb.Endpoint.broadcast("transaction", "deleted", id)
+
+		{:noreply, assign(socket, :transactions, list_transactions())}
+	end
+
+	@impl true
+	def handle_info(%{event: "deleted", payload: id}, socket) do
+		# transaction = Store.get_transaction!(id)
+		# {:ok, _} = Store.delete_transaction(transaction)
 
 		{:noreply, assign(socket, :transactions, list_transactions())}
 	end
