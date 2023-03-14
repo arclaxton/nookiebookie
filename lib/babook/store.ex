@@ -1,200 +1,200 @@
 defmodule Babook.Store do
-  @moduledoc """
-  The Store context.
-  """
+	@moduledoc """
+	The Store context.
+	"""
 
-  import Ecto.Query, warn: false
-  alias Babook.Repo
+	import Ecto.Query, warn: false
+	alias Babook.Repo
 
-  alias Babook.Store.Account
+	alias Babook.Store.Account
 
-  @doc """
-  Returns the list of accounts.
+	@doc """
+	Returns the list of accounts.
 
-  ## Examples
+	## Examples
 
-      iex> list_accounts()
-      [%Account{}, ...]
+			iex> list_accounts()
+			[%Account{}, ...]
 
-  """
-  def list_accounts do
-    Repo.all(Account)
-  end
+	"""
+	def list_accounts do
+		Repo.all(Account)
+	end
 
-  @doc """
-  Gets a single account.
+	@doc """
+	Gets a single account.
 
-  Raises `Ecto.NoResultsError` if the Account does not exist.
+	Raises `Ecto.NoResultsError` if the Account does not exist.
 
-  ## Examples
+	## Examples
 
-      iex> get_account!(123)
-      %Account{}
+			iex> get_account!(123)
+			%Account{}
 
-      iex> get_account!(456)
-      ** (Ecto.NoResultsError)
+			iex> get_account!(456)
+			** (Ecto.NoResultsError)
 
-  """
-  def get_account!(id), do: Repo.get!(Account, id)
+	"""
+	def get_account!(id), do: Repo.get!(Account, id)
 
-  @doc """
-  Creates a account.
+	@doc """
+	Creates a account.
 
-  ## Examples
+	## Examples
 
-      iex> create_account(%{field: value})
-      {:ok, %Account{}}
+			iex> create_account(%{field: value})
+			{:ok, %Account{}}
 
-      iex> create_account(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
+			iex> create_account(%{field: bad_value})
+			{:error, %Ecto.Changeset{}}
 
-  """
-  def create_account(attrs \\ %{}) do
-    %Account{}
-    |> Account.changeset(attrs)
-    |> Repo.insert()
-  end
+	"""
+	def create_account(attrs \\ %{}) do
+		%Account{}
+		|> Account.changeset(attrs)
+		|> Repo.insert()
+	end
 
-  @doc """
-  Updates a account.
+	@doc """
+	Updates a account.
 
-  ## Examples
+	## Examples
 
-      iex> update_account(account, %{field: new_value})
-      {:ok, %Account{}}
+			iex> update_account(account, %{field: new_value})
+			{:ok, %Account{}}
 
-      iex> update_account(account, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
+			iex> update_account(account, %{field: bad_value})
+			{:error, %Ecto.Changeset{}}
 
-  """
-  def update_account(%Account{} = account, attrs) do
-    account
-    |> Account.changeset(attrs)
-    |> Repo.update()
-  end
+	"""
+	def update_account(%Account{} = account, attrs) do
+		account
+		|> Account.changeset(attrs)
+		|> Repo.update()
+	end
 
-  @doc """
-  Deletes a account.
+	@doc """
+	Deletes a account.
 
-  ## Examples
+	## Examples
 
-      iex> delete_account(account)
-      {:ok, %Account{}}
+			iex> delete_account(account)
+			{:ok, %Account{}}
 
-      iex> delete_account(account)
-      {:error, %Ecto.Changeset{}}
+			iex> delete_account(account)
+			{:error, %Ecto.Changeset{}}
 
-  """
-  def delete_account(%Account{} = account) do
-    Repo.delete(account)
-  end
+	"""
+	def delete_account(%Account{} = account) do
+		Repo.delete(account)
+	end
 
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking account changes.
+	@doc """
+	Returns an `%Ecto.Changeset{}` for tracking account changes.
 
-  ## Examples
+	## Examples
 
-      iex> change_account(account)
-      %Ecto.Changeset{data: %Account{}}
+			iex> change_account(account)
+			%Ecto.Changeset{data: %Account{}}
 
-  """
-  def change_account(%Account{} = account, attrs \\ %{}) do
-    Account.changeset(account, attrs)
-  end
+	"""
+	def change_account(%Account{} = account, attrs \\ %{}) do
+		Account.changeset(account, attrs)
+	end
 
-  alias Babook.Store.Transaction
+	alias Babook.Store.Transaction
 
-  @doc """
-  Returns the list of transactions.
+	@doc """
+	Returns the list of transactions.
 
-  ## Examples
+	## Examples
 
-      iex> list_transactions()
-      [%Transaction{}, ...]
+			iex> list_transactions()
+			[%Transaction{}, ...]
 
-  """
-  def list_transactions do
-    Repo.all(Transaction)
-  end
+	"""
+	def list_transactions do
+		Repo.all(Transaction)
+	end
 
-  @doc """
-  Gets a single transaction.
+	@doc """
+	Gets a single transaction.
 
-  Raises `Ecto.NoResultsError` if the Transaction does not exist.
+	Raises `Ecto.NoResultsError` if the Transaction does not exist.
 
-  ## Examples
+	## Examples
 
-      iex> get_transaction!(123)
-      %Transaction{}
+			iex> get_transaction!(123)
+			%Transaction{}
 
-      iex> get_transaction!(456)
-      ** (Ecto.NoResultsError)
+			iex> get_transaction!(456)
+			** (Ecto.NoResultsError)
 
-  """
-  def get_transaction!(id), do: Repo.get!(Transaction, id)
+	"""
+	def get_transaction!(id), do: Repo.get!(Transaction, id)
 
-  @doc """
-  Creates a transaction.
+	@doc """
+	Creates a transaction.
 
-  ## Examples
+	## Examples
 
-      iex> create_transaction(%{field: value})
-      {:ok, %Transaction{}}
+			iex> create_transaction(%{field: value})
+			{:ok, %Transaction{}}
 
-      iex> create_transaction(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
+			iex> create_transaction(%{field: bad_value})
+			{:error, %Ecto.Changeset{}}
 
-  """
-  def create_transaction(attrs \\ %{}) do
-    %Transaction{}
-    |> Transaction.changeset(attrs)
-    |> Repo.insert()
-  end
+	"""
+	def create_transaction(attrs \\ %{}) do
+		%Transaction{}
+		|> Transaction.changeset(attrs)
+		|> Repo.insert()
+	end
 
-  @doc """
-  Updates a transaction.
+	@doc """
+	Updates a transaction.
 
-  ## Examples
+	## Examples
 
-      iex> update_transaction(transaction, %{field: new_value})
-      {:ok, %Transaction{}}
+			iex> update_transaction(transaction, %{field: new_value})
+			{:ok, %Transaction{}}
 
-      iex> update_transaction(transaction, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
+			iex> update_transaction(transaction, %{field: bad_value})
+			{:error, %Ecto.Changeset{}}
 
-  """
-  def update_transaction(%Transaction{} = transaction, attrs) do
-    transaction
-    |> Transaction.changeset(attrs)
-    |> Repo.update()
-  end
+	"""
+	def update_transaction(%Transaction{} = transaction, attrs) do
+		transaction
+		|> Transaction.changeset(attrs)
+		|> Repo.update()
+	end
 
-  @doc """
-  Deletes a transaction.
+	@doc """
+	Deletes a transaction.
 
-  ## Examples
+	## Examples
 
-      iex> delete_transaction(transaction)
-      {:ok, %Transaction{}}
+			iex> delete_transaction(transaction)
+			{:ok, %Transaction{}}
 
-      iex> delete_transaction(transaction)
-      {:error, %Ecto.Changeset{}}
+			iex> delete_transaction(transaction)
+			{:error, %Ecto.Changeset{}}
 
-  """
-  def delete_transaction(%Transaction{} = transaction) do
-    Repo.delete(transaction)
-  end
+	"""
+	def delete_transaction(%Transaction{} = transaction) do
+		Repo.delete(transaction)
+	end
 
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking transaction changes.
+	@doc """
+	Returns an `%Ecto.Changeset{}` for tracking transaction changes.
 
-  ## Examples
+	## Examples
 
-      iex> change_transaction(transaction)
-      %Ecto.Changeset{data: %Transaction{}}
+			iex> change_transaction(transaction)
+			%Ecto.Changeset{data: %Transaction{}}
 
-  """
-  def change_transaction(%Transaction{} = transaction, attrs \\ %{}) do
-    Transaction.changeset(transaction, attrs)
-  end
+	"""
+	def change_transaction(%Transaction{} = transaction, attrs \\ %{}) do
+		Transaction.changeset(transaction, attrs)
+	end
 end
