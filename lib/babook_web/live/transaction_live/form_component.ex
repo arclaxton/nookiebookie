@@ -31,10 +31,10 @@ defmodule BabookWeb.TransactionLive.FormComponent do
 		case Store.update_transaction(socket.assigns.transaction, transaction_params) do
 			{:ok, _transaction} ->
 				{:noreply,
-				 socket
-				 |> put_flash(:info, "Transaction updated successfully")
-				 |> push_redirect(to: socket.assigns.return_to)}
-
+					socket
+					|> put_flash(:info, "Transaction updated successfully")
+					|> push_redirect(to: socket.assigns.return_to)
+				}
 			{:error, %Ecto.Changeset{} = changeset} ->
 				{:noreply, assign(socket, :changeset, changeset)}
 		end
