@@ -2,7 +2,6 @@ defmodule BabookWeb.TransactionLive.Index do
 	use BabookWeb, :live_view
 
 	alias Babook.Store
-	alias Phoenix.PubSub
 	alias Babook.Store.Transaction
 
 	@topic "transaction"
@@ -46,10 +45,15 @@ defmodule BabookWeb.TransactionLive.Index do
 	end
 
 	@impl true
-	def handle_info(%{event: "deleted", payload: id}, socket) do
+	def handle_info(%{event: "deleted", payload: _id}, socket) do
 		# transaction = Store.get_transaction!(id)
 		# {:ok, _} = Store.delete_transaction(transaction)
 
+		{:noreply, assign(socket, :transactions, list_transactions())}
+	end
+
+	@impl true
+	def handle_info(%{event: "updated", payload: _transaction}, socket) do
 		{:noreply, assign(socket, :transactions, list_transactions())}
 	end
 

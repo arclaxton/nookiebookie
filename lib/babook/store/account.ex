@@ -1,22 +1,26 @@
 defmodule Babook.Store.Account do
-  use Ecto.Schema
-  import Ecto.Changeset
+	use Ecto.Schema
+	import Ecto.Changeset
 
-  @primary_key {:id, :binary_id, autogenerate: true}
-  @foreign_key_type :binary_id
-  schema "accounts" do
-    field :name, :string
-    field :owner, :string
-    field :plaid_id, :string
+	@primary_key {:id, :binary_id, autogenerate: true}
+	@foreign_key_type :binary_id
+	schema "accounts" do
+		field :name, :string
+		field :owner, :string
+		field :balance, :float
+		field :plaid_id, :string, [source: :account_id]
+		field :plaid_item_id, :string
+		field :type, :string
+		field :currency, :string
 
-    timestamps()
-  end
+		timestamps()
+	end
 
-  @doc false
-  def changeset(account, attrs) do
-    account
-    |> cast(attrs, [:name, :owner, :plaid_id])
-    |> validate_required([:name, :owner, :plaid_id])
-    |> unique_constraint(:plaid_id)
-  end
+	@doc false
+	def changeset(account, attrs) do
+		account
+		|> cast(attrs, [:name, :owner, :plaid_id])
+		|> validate_required([:name, :owner, :plaid_id])
+		|> unique_constraint(:plaid_id)
+	end
 end

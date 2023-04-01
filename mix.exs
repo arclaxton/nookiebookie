@@ -49,6 +49,9 @@ defmodule Babook.MixProject do
 			{:jason, "~> 1.2"},
 			{:plug_cowboy, "~> 2.5"},
 			{:lucide_live_view, "~> 0.1.0"},
+			{:httpoison, "~> 2.0"},
+			{:poison, "~> 5.0"},
+			{:timex, "~> 3.0"},
 		]
 	end
 
