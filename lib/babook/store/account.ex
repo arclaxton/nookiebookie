@@ -8,7 +8,7 @@ defmodule Babook.Store.Account do
 		field :name, :string
 		field :owner, :string
 		field :balance, :float
-		field :plaid_id, :string, [source: :account_id]
+		field :plaid_id, :string
 		field :plaid_item_id, :string
 		field :type, :string
 		field :currency, :string

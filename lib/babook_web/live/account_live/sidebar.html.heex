@@ -1,0 +1,8 @@
+<tbody id="accounts">
+	<%= for account <- @accounts do %>
+	<tr id={"account-#{account.id}"}>
+		<td><%= account.name %></td>
+		<td><%= account.owner %></td>
+	</tr>
+	<% end %>
+</tbody>
