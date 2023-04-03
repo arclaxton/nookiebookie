@@ -12,7 +12,7 @@
 
 alias Babook.Store.Transaction
 alias Babook.Store.Account
-import Ecto.Queryauthin
+import Ecto.Query
 
 Babook.Repo.delete_all(from t in "transactions")
 Babook.Repo.delete_all(from a in "accounts")
@@ -21,14 +21,14 @@ Babook.Repo.insert %Account{
 	name: "discover",
 	owner: "Adam",
 	balance: 0.0,
-	plaid_id: "nil"
+	plaid_id: nil
 }
 
 Babook.Repo.insert %Account{
 	name: "usaa",
 	owner: "Adam",
 	balance: 0.0,
-	plaid_id: "nil"
+	plaid_id: nil
 }
 
 Babook.Repo.insert! %Transaction{

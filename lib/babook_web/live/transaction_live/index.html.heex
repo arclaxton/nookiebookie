@@ -1,4 +1,4 @@
-<h1>Transactions</h1>
+<div class="top"><h1>Transactions</h1></div>
 
 <%= if @live_action in [:new, :edit] do %>
 	<.modal return_to={Routes.transaction_index_path(@socket, :index)}>
@@ -37,8 +37,9 @@
 				<td><%= transaction.budget_allocation %></td>
 
 				<td>
-					<span><%= live_patch "🖉", to: Routes.transaction_index_path(@socket, :edit, transaction), class: "test" %></span>
-					<span><%= link "❌", to: "#", phx_click: "delete", phx_value_id: transaction.id, data: [confirm: "Are you sure?"] %></span>
+					<span class="edit"><%= live_patch "🖉", to: Routes.transaction_index_path(@socket, :edit, transaction), class: "edit" %></span>
+
+					<span><%= link "🗑", to: "#", phx_click: "delete", phx_value_id: transaction.id, data: [confirm: "Are you sure?"], class: "delete" %></span>
 				</td>
 			</tr>
 		<% end %>
@@ -47,13 +48,25 @@
 
 <span><%= live_patch "New Transaction", to: Routes.transaction_index_path(@socket, :new) %></span>
 <style>
+	thead {
+		display: block;
+	}
 	#transactions {
 		background-color: var(--nord1);
+		height: 70vh;
+		width: 100%;
+		overflow-y: scroll;
+		display: block;
 	}
 	main.container {
 		margin: 0 !important;
 		min-width: 100%;
+		max-height: 90vh;
 	}
+	th, td {
+		width: 20%;
+	}
+
 	tr:nth-child(2n) {
 		background-color: var(--nord3);
 	}

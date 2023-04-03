@@ -75,6 +75,12 @@
 	}
 	body {
 		background-color: var(--nord2);
+		overflow: hidden;
+		height: 100vh;
+	}
+	#inner_content {
+		overflow: hidden;
+		scrollbar-color: var(--nord1));
 	}
 	header {
 		background-color: var(--nord0);
@@ -83,13 +89,39 @@
 		color: var(--nord6);
 	}
 	#modal-content {
-		background-color: var(--nord3);
+		background-color:	 var(--nord3);
 	}
 	button[type='submit'] {
 		background-color: var(--nord7);
 	}
 	.phx-modal-close {
 		color: var(--nord4);
+	}
+	::-webkit-scrollbar {
+		width: 7px;
+	}
+	::-webkit-scrollbar-track {
+		background-color: var(--nord3);
+	}
+	::-webkit-scrollbar-thumb {
+		background-color: var(--nord0);
+		border-radius: 100px;
+		border: 1px solid var(--nord3);
+	}
+	.edit {
+		color: var(--nord13);
+	}
+	.delete {
+		color: var(--nord11);
+	}
+	a {
+		color: var(--nord10);
+	}
+	td, th {
+		text-align: center;
+	}
+	input {
+		color: var(--nord5);
 	}
 </style>
 </html>
