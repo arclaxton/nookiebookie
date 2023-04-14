@@ -1,8 +1,19 @@
-<tbody id="accounts">
+<div id="accounts">
 	<%= for account <- @accounts do %>
-	<tr id={"account-#{account.id}"}>
-		<td><%= account.name %></td>
-		<td><%= account.owner %></td>
-	</tr>
+	<div id={"account-#{account.id}"} class="account-item">
+		<span><%= account.name %></span>
+		<span><%= account.owner %></span>
+		<span class="edit"><%= live_patch "🖉", to: Routes.account_index_path(@socket, :edit, account), class: "edit" %></span>
+	</div>
 	<% end %>
-</tbody>
+	<span><%= live_patch "Add Account", to: Routes.account_index_path(@socket, :new) %></span>
+
+</div>
+
+<style>
+.account-item {
+	margin: 5px;
+	display: flex;
+	justify-content: space-between;
+}
+</style>

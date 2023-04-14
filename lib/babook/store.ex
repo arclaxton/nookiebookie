@@ -113,8 +113,27 @@ defmodule Babook.Store do
 			[%Transaction{}, ...]
 
 	"""
-	def list_transactions do
-		Repo.all(Transaction)
+	def list_transactions() do
+		Repo.all(from t in Transaction, order_by: [asc: t.date])
+	end
+
+	@doc """
+	Returns the list of transactions sorted by `options`.
+
+	## Examples
+
+			iex> list_transactions()
+			[%Transaction{}, ...]
+
+	"""
+	def list_transactions(options) do
+		from(Transaction)
+		|> sort(options)
+		|> Repo.all()
+	end
+
+	defp sort(query, %{sort_by: by, sort_order: order}) do
+		order_by(query, {^order, ^by})
 	end
 
 	@doc """

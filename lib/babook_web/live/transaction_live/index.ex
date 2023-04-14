@@ -9,7 +9,7 @@ defmodule BabookWeb.TransactionLive.Index do
 	@impl true
 	def mount(_params, _session, socket) do
 		BabookWeb.Endpoint.subscribe(@topic)
-		{:ok, assign(socket, :transactions, list_transactions())}
+		{:ok, socket}
 	end
 
 	@impl true
@@ -29,10 +29,20 @@ defmodule BabookWeb.TransactionLive.Index do
 		|> assign(:transaction, %Transaction{})
 	end
 
-	defp apply_action(socket, :index, _params) do
+	defp apply_action(socket, :index, params) do
+		sort_by = (params["sort_by"] || "date") |> String.to_atom()
+		sort_order = (params["sort_order"] || "asc") |> String.to_atom()
+
+		options = %{
+			sort_by: sort_by,
+			sort_order: sort_order
+		}
+
 		socket
 		|> assign(:page_title, "Listing Transactions")
-		|> assign(:transaction, nil)
+		# |> assign(:transaction, nil)
+		|> assign(:options, options)
+		|> assign(:transactions, Store.list_transactions(options))
 	end
 
 	@impl true
@@ -41,7 +51,7 @@ defmodule BabookWeb.TransactionLive.Index do
 		{:ok, _} = Store.delete_transaction(transaction)
 		BabookWeb.Endpoint.broadcast("transaction", "deleted", id)
 
-		{:noreply, assign(socket, :transactions, list_transactions())}
+		{:noreply, assign(socket, :transactions, Store.list_transactions())}
 	end
 
 	@impl true
@@ -49,15 +59,18 @@ defmodule BabookWeb.TransactionLive.Index do
 		# transaction = Store.get_transaction!(id)
 		# {:ok, _} = Store.delete_transaction(transaction)
 
-		{:noreply, assign(socket, :transactions, list_transactions())}
+		{:noreply, assign(socket, :transactions, Store.list_transactions())}
 	end
 
 	@impl true
 	def handle_info(%{event: "updated", payload: _transaction}, socket) do
-		{:noreply, assign(socket, :transactions, list_transactions())}
+		{:noreply, assign(socket, :transactions, Store.list_transactions())}
 	end
 
-	defp list_transactions do
-		Store.list_transactions()
+	def next_sort_order(order) do
+		case order do
+			:asc -> :desc
+			:desc -> :asc
+		end
 	end
 end
