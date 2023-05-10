@@ -1,14 +1,14 @@
 <h1>Listing Accounts</h1>
 
 <%= if @live_action in [:new, :edit] do %>
-  <.modal return_to={Routes.account_index_path(@socket, :index)}>
+  <.modal return_to={Routes.transaction_transactions_path(@socket, :index)}>
     <.live_component
       module={BabookWeb.AccountLive.FormComponent}
       id={@account.id || :new}
       title={@page_title}
       action={@live_action}
       account={@account}
-      return_to={Routes.account_index_path(@socket, :index)}
+      return_to={Routes.transaction_transactions_path(@socket, :index)}
     />
   </.modal>
 <% end %>

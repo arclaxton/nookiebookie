@@ -4,7 +4,7 @@ defmodule Babook.Store.BudgetCategory do
 
 	@primary_key {:id, :binary_id, autogenerate: true}
 	@foreign_key_type :binary_id
-	schema "transactions" do
+	schema "budget_categories" do
 		field :name, :string
 		timestamps()
 	end

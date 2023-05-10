@@ -1,4 +1,4 @@
-defmodule BabookWeb.TransactionLive.Index do
+defmodule BabookWeb.TransactionLive.Transactions do
 	use BabookWeb, :live_view
 
 	alias Babook.Store
@@ -31,7 +31,7 @@ defmodule BabookWeb.TransactionLive.Index do
 
 	defp apply_action(socket, :index, params) do
 		sort_by = (params["sort_by"] || "date") |> String.to_atom()
-		sort_order = (params["sort_order"] || "asc") |> String.to_atom()
+		sort_order = (params["sort_order"] || "desc") |> String.to_atom()
 
 		options = %{
 			sort_by: sort_by,

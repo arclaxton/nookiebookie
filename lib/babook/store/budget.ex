@@ -1,16 +1,14 @@
 defmodule Babook.Store.Budget do
 	use Ecto.Schema
 	import Ecto.Changeset
-	import Ecto.Association
-	import Ecto.Query
 
 	@primary_key {:id, :binary_id, autogenerate: true}
 	@foreign_key_type :binary_id
-	schema "transactions" do
+	schema "budgets" do
 		field :year, :integer
 		field :month, :integer
 		field :total, :float
-		belongs_to :budget_category, Babook.Store.BudgetCategory
+		belongs_to :budget_category, Babook.Store.BudgetCategory, source: :"budget_category"
 
 		timestamps()
 	end

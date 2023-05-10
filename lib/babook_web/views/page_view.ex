@@ -1,5 +1,4 @@
-import Phoenix.Component
 
 defmodule BabookWeb.PageView do
-  use BabookWeb, :view
+	use BabookWeb, :view
 end

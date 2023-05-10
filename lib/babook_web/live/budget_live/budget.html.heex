@@ -1,0 +1,26 @@
+<form phx-change="choose_month">
+<label>Month</label>
+<input class="month" type="month" name="month" value={"#{@month}"}>
+</form>
+<%= for category <- @categories do %>
+<div><%= category.name %></div>
+<% end %>
+<%= if !@adding do %>
+<br>
+<span class="new"><%= live_patch "+ New Category", to: "/budget/category/new", class: "new" %></span>
+<% else %>
+<form phx-submit="save_new_category">
+	<label>Name
+	<input type="text" name="name">
+	</label>
+	<label>Target
+	<input type="number" name="target">
+	</label>
+	<button type="submit">Save</button>
+</form>
+<% end %>
+<style>
+	input {
+		max-width: 200px;
+	}
+</style>

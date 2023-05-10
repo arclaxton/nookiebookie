@@ -45,7 +45,7 @@ defmodule BabookWeb do
 	def live_view do
 		quote do
 			use Phoenix.LiveView,
-				layout: {BabookWeb.LayoutView, "live.html"}
+				layout: {BabookWeb.LayoutView, :live}
 
 			unquote(view_helpers())
 		end

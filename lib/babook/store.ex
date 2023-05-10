@@ -4,6 +4,7 @@ defmodule Babook.Store do
 	"""
 
 	import Ecto.Query, warn: false
+ alias Babook.Store.BudgetCategory
 	alias Babook.Repo
 
 	alias Babook.Store.Account
@@ -55,6 +56,7 @@ defmodule Babook.Store do
 		|> Repo.insert()
 	end
 
+	
 	@doc """
 	Updates a account.
 
@@ -114,7 +116,7 @@ defmodule Babook.Store do
 
 	"""
 	def list_transactions() do
-		Repo.all(from t in Transaction, order_by: [asc: t.date])
+		Repo.all(from t in Transaction, order_by: [desc: t.date])
 	end
 
 	@doc """
@@ -215,5 +217,41 @@ defmodule Babook.Store do
 	"""
 	def change_transaction(%Transaction{} = transaction, attrs \\ %{}) do
 		Transaction.changeset(transaction, attrs)
+	end
+
+	alias Babook.Store.Category
+
+	def create_category(attrs \\ %{}) do
+		%Category{}
+		|> Category.changeset(attrs)
+		|> Repo.insert()
+	end
+
+	def list_categories do
+		IO.inspect(Repo.all(Category))
+		Repo.all(Category)
+	end
+
+	alias Babook.Store.Budget
+
+	def create_budget(year, month, category, total) do
+		Repo.insert(%Budget{
+			year: year,
+			month: month,
+			budget_category: category,
+			total: total
+		})
+	end
+
+	def get_budgets_for_month() do
+		today = Date.utc_today()
+		get_budgets_for_month(today.month)
+	end
+
+	def get_budgets_for_month(month) do
+		query = from b in Budget,
+			where: b.month == ^month,
+			select: b
+		Repo.all(query)
 	end
 end
