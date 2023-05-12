@@ -33,10 +33,8 @@ defmodule NookieBookieWeb.BudgetLive.Budget do
 		{:noreply, assign(socket, adding: true)}
 	end
 	def handle_event("save_new_category", category_params, socket) do
-		{_, category} = save_category(socket, :new, category_params)
-		year = socket.assign.year
-		for month <- socket.assign.month .. 12 do
-			Store.create_budget(year, month, category, 0)
+		save_category(socket, :new, category_params) |> case do
+			 {:noreply, socket} -> add_budgets(socket)
 		end
 	end
 
@@ -46,10 +44,23 @@ defmodule NookieBookieWeb.BudgetLive.Budget do
 				{:noreply,
 				 socket
 				 |> put_flash(:info, "category #{category.name} created")
+				 |> assign(new_category: category)
 				 |> push_redirect(to: "/budget")}
 
 			{:error, %Ecto.Changeset{} = changeset} ->
 				{:noreply, assign(socket, changeset: changeset)}
 		end
+	end
+
+	def add_budgets(socket) do
+		IO.inspect socket
+		year = socket.assigns.year
+		month = socket.assigns.month 
+			|> String.slice(String.length(socket.assigns.month)-2, 2)
+			|> String.to_integer
+		for month <- month .. 12 do
+			Store.create_budget(year, month, socket.assigns.new_category.id, 0.0)
+		end
+		{:noreply, socket}
 	end
 end

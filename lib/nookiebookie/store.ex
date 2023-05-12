@@ -238,7 +238,7 @@ defmodule NookieBookie.Store do
 		Repo.insert(%Budget{
 			year: year,
 			month: month,
-			budget_category: category,
+			budget_category_id: category,
 			total: total
 		})
 	end
