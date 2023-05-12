@@ -1,0 +1,86 @@
+<div class="top"><h1>Transactions</h1></div>
+
+<%= if @live_action in [:new, :edit] do %>
+	<.modal return_to={Routes.transaction_transactions_path(@socket, :index)}>
+		<.live_component
+			module={NookieBookieWeb.TransactionLive.FormComponent}
+			id={@transaction.id || :new}
+			title={@page_title}
+			action={@live_action}
+			transaction={@transaction}
+			return_to={Routes.transaction_transactions_path(@socket, :index)}
+		/>
+	</.modal>
+<% end %>
+
+<table>
+	<thead>
+		<tr>
+			<th><.link class="label" patch={"/transactions?sort_by=#{:date}&sort_order=#{next_sort_order(@options.sort_order)}"}>
+			Date
+			</.link></th>
+			<th><.link class="label" patch={"/transactions?sort_by=#{:account}&sort_order=#{next_sort_order(@options.sort_order)}"}>
+			Account
+			</.link></th>
+			<th><.link class="label" patch={"/transactions?sort_by=#{:amount}&sort_order=#{next_sort_order(@options.sort_order)}"}>
+			Amount
+			</.link></th>
+			<th><.link class="label" patch={"/transactions?sort_by=#{:category}&sort_order=#{next_sort_order(@options.sort_order)}"}>
+			Category
+			</.link></th>
+			<th><.link class="label" patch={"/transactions?sort_by=#{:budget_allocation}&sort_order=#{next_sort_order(@options.sort_order)}"}>
+			Budget allocation
+			</.link></th>
+
+			<th></th>
+		</tr>
+	</thead>
+	<tbody id="transactions">
+		<%= for transaction <- @transactions do %>
+			<tr id={"transaction-#{transaction.id}"}>
+				<td><%= transaction.date %></td>
+				<td><%= transaction.account %></td>
+				<td><%= transaction.amount %></td>
+				<td><%= transaction.category %></td>
+				<td><%= transaction.budget_allocation %></td>
+
+				<td>
+					<span class="edit"><%= live_patch "🖉", to: Routes.transaction_transactions_path(@socket, :edit, transaction), class: "edit" %></span>
+
+					<span><%= link "🗑", to: "#", phx_click: "delete", phx_value_id: transaction.id, data: [confirm: "Are you sure?"], class: "delete" %></span>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<span><%= live_patch "Add Transaction", to: Routes.transaction_transactions_path(@socket, :new) %></span>
+<style>
+	thead {
+		display: block;
+	}
+	#transactions {
+		background-color: var(--nord1);
+		height: 70vh;
+		width: 100%;
+		overflow-y: scroll;
+		display: block;
+	}
+	main.container {
+		margin: 0 !important;
+		min-width: 100%;
+		max-height: 90vh;
+	}
+	th, td {
+		width: 20%;
+	}
+
+	a.label {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	tr:nth-child(2n) {
+		background-color: var(--nord3);
+	}
+</style>
