@@ -8,7 +8,7 @@ defmodule Babook.Store.Budget do
 		field :year, :integer
 		field :month, :integer
 		field :total, :float
-		belongs_to :budget_category, Babook.Store.BudgetCategory, source: :"budget_category"
+		belongs_to :budget_category, Babook.Store.BudgetCategory, source: :budget_category
 
 		timestamps()
 	end
