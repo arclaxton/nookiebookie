@@ -1,12 +1,12 @@
-defmodule Babook.StoreTest do
-  use Babook.DataCase
+defmodule NookieBookie.StoreTest do
+  use NookieBookie.DataCase
 
-  alias Babook.Store
+  alias NookieBookie.Store
 
   describe "accounts" do
-    alias Babook.Store.Account
+    alias NookieBookie.Store.Account
 
-    import Babook.StoreFixtures
+    import NookieBookie.StoreFixtures
 
     @invalid_attrs %{name: nil, owner: nil, plaid_id: nil}
 
@@ -62,9 +62,9 @@ defmodule Babook.StoreTest do
   end
 
   describe "transactions" do
-    alias Babook.Store.Transaction
+    alias NookieBookie.Store.Transaction
 
-    import Babook.StoreFixtures
+    import NookieBookie.StoreFixtures
 
     @invalid_attrs %{account: nil, amount: nil, budget_allocation: nil, category: nil, merchant: nil, transfer: nil}
 

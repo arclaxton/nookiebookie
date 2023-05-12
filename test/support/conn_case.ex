@@ -1,4 +1,4 @@
-defmodule BabookWeb.ConnCase do
+defmodule NookieBookieWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule BabookWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use BabookWeb.ConnCase, async: true`, although
+  by setting `use NookieBookieWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -22,17 +22,17 @@ defmodule BabookWeb.ConnCase do
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
-      import BabookWeb.ConnCase
+      import NookieBookieWeb.ConnCase
 
-      alias BabookWeb.Router.Helpers, as: Routes
+      alias NookieBookieWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint BabookWeb.Endpoint
+      @endpoint NookieBookieWeb.Endpoint
     end
   end
 
   setup tags do
-    Babook.DataCase.setup_sandbox(tags)
+    NookieBookie.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end

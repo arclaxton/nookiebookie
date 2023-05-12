@@ -1,8 +1,8 @@
-defmodule BabookWeb.TransactionLiveTest do
-  use BabookWeb.ConnCase
+defmodule NookieBookieWeb.TransactionLiveTest do
+  use NookieBookieWeb.ConnCase
 
   import Phoenix.LiveViewTest
-  import Babook.StoreFixtures
+  import NookieBookie.StoreFixtures
 
   @create_attrs %{account: 42, amount: 120.5, budget_allocation: 42, category: "some category", merchant: "some merchant", transfer: true}
   @update_attrs %{account: 43, amount: 456.7, budget_allocation: 43, category: "some updated category", merchant: "some updated merchant", transfer: false}

@@ -1,4 +1,4 @@
-defmodule Babook.Repo.Migrations.AccountPlaidFields do
+defmodule NookieBookie.Repo.Migrations.AccountPlaidFields do
 	use Ecto.Migration
 
 	def change do

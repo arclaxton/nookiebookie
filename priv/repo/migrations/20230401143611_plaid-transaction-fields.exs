@@ -1,4 +1,4 @@
-defmodule :"Elixir.Babook.Repo.Migrations.Plaid-transaction-fields" do
+defmodule :"Elixir.NookieBookie.Repo.Migrations.Plaid-transaction-fields" do
 	use Ecto.Migration
 
 	def change do

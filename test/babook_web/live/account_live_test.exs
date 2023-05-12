@@ -1,8 +1,8 @@
-defmodule BabookWeb.AccountLiveTest do
-  use BabookWeb.ConnCase
+defmodule NookieBookieWeb.AccountLiveTest do
+  use NookieBookieWeb.ConnCase
 
   import Phoenix.LiveViewTest
-  import Babook.StoreFixtures
+  import NookieBookie.StoreFixtures
 
   @create_attrs %{name: "some name", owner: "some owner", plaid_id: "some plaid_id"}
   @update_attrs %{name: "some updated name", owner: "some updated owner", plaid_id: "some updated plaid_id"}

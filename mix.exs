@@ -1,9 +1,9 @@
-defmodule Babook.MixProject do
+defmodule NookieBookie.MixProject do
 	use Mix.Project
 
 	def project do
 		[
-			app: :babook,
+			app: :nookiebookie,
 			version: "0.1.0",
 			elixir: "~> 1.12",
 			elixirc_paths: elixirc_paths(Mix.env()),
@@ -18,7 +18,7 @@ defmodule Babook.MixProject do
 	# Type `mix help compile.app` for more information.
 	def application do
 		[
-			mod: {Babook.Application, []},
+			mod: {NookieBookie.Application, []},
 			extra_applications: [:logger, :runtime_tools]
 		]
 	end

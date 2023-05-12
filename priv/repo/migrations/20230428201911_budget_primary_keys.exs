@@ -1,4 +1,4 @@
-defmodule Babook.Repo.Migrations.BudgetPrimaryKeys do
+defmodule NookieBookie.Repo.Migrations.BudgetPrimaryKeys do
 	use Ecto.Migration
 
 	def change do

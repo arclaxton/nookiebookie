@@ -1,5 +1,5 @@
-defmodule BabookWeb.LayoutViewTest do
-  use BabookWeb.ConnCase, async: true
+defmodule NookieBookieWeb.LayoutViewTest do
+  use NookieBookieWeb.ConnCase, async: true
 
   # When testing helpers, you may want to import Phoenix.HTML and
   # use functions such as safe_to_string() to convert the helper

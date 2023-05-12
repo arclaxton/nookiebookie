@@ -1,4 +1,4 @@
-defmodule Babook.Repo.Migrations.CreateAccounts do
+defmodule NookieBookie.Repo.Migrations.CreateAccounts do
   use Ecto.Migration
 
   def change do

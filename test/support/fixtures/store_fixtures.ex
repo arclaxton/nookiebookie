@@ -1,7 +1,7 @@
-defmodule Babook.StoreFixtures do
+defmodule NookieBookie.StoreFixtures do
   @moduledoc """
   This module defines test helpers for creating
-  entities via the `Babook.Store` context.
+  entities via the `NookieBookie.Store` context.
   """
 
   @doc """
@@ -20,7 +20,7 @@ defmodule Babook.StoreFixtures do
         owner: "some owner",
         plaid_id: unique_account_plaid_id()
       })
-      |> Babook.Store.create_account()
+      |> NookieBookie.Store.create_account()
 
     account
   end
@@ -39,7 +39,7 @@ defmodule Babook.StoreFixtures do
         merchant: "some merchant",
         transfer: true
       })
-      |> Babook.Store.create_transaction()
+      |> NookieBookie.Store.create_transaction()
 
     transaction
   end

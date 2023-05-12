@@ -1,5 +1,5 @@
-defmodule BabookWeb.PageControllerTest do
-  use BabookWeb.ConnCase
+defmodule NookieBookieWeb.PageControllerTest do
+  use NookieBookieWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")

@@ -1,4 +1,4 @@
-defmodule Babook.Repo.Migrations.CreateBudgetsTable do
+defmodule NookieBookie.Repo.Migrations.CreateBudgetsTable do
 	use Ecto.Migration
 
 	def change do

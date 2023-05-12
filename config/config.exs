@@ -7,15 +7,15 @@
 # General application configuration
 import Config
 
-config :babook,
-	ecto_repos: [Babook.Repo],
+config :nookiebookie,
+	ecto_repos: [NookieBookie.Repo],
 	generators: [binary_id: true]
 
 # Configures the endpoint
-config :babook, BabookWeb.Endpoint,
+config :nookiebookie, NookieBookieWeb.Endpoint,
 	url: [host: "localhost"],
-	render_errors: [view: BabookWeb.ErrorView, accepts: ~w(html json), layout: false],
-	pubsub_server: Babook.PubSub,
+	render_errors: [view: NookieBookieWeb.ErrorView, accepts: ~w(html json), layout: false],
+	pubsub_server: NookieBookie.PubSub,
 	live_view: [signing_salt: "Rikxy5wD"]
 
 # Configures the mailer
@@ -25,7 +25,7 @@ config :babook, BabookWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :babook, Babook.Mailer, adapter: Swoosh.Adapters.Local
+config :nookiebookie, NookieBookie.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false
