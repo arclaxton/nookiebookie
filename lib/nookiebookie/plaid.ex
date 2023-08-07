@@ -1,18 +1,20 @@
 defmodule NookieBookie.Plaid do
 
 	def get_transactions() do
-		response = HTTPoison.post! plaid_url() <> "/transactions/get",
-		~s({
-			"access_token": "#{get_access_token()}",
-			"client_id": "#{get_client_id()}",
-			"secret": "#{get_client_secret()}",
-			"start_date": "2022-11-01",
-			"end_date": "2022-11-06"
-		}),
-		headers()
-
-		response.body
-			|> Poison.decode!
+		# case Plaid.Accounts.get(%{access_token: token}) do
+		# 	{:ok, %Plaid.Accounts{accounts: accts}} ->
+		# 	conn
+		# 	|> put_status(200)
+		# 	|> json(accts)
+		# 	{:error, %Plaid.Error{error_message: msg}} ->
+		# 	conn
+		# 	|> put_status(400)
+		# 	|> json(%{message: msg})
+		# 	{:error, reason} ->
+		# 	conn
+		# 	|> put_status(400)
+		# 	|> json(%{message: "Request failed, please try again."})
+		# end
 	end
 
 	def get_accounts() do
