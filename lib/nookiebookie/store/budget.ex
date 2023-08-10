@@ -8,7 +8,8 @@ defmodule NookieBookie.Store.Budget do
 		field :year, :integer
 		field :month, :integer
 		field :total, :float
-		belongs_to :budget_category, NookieBookie.Store.BudgetCategory
+
+		belongs_to :category, NookieBookie.Store.Category
 
 		timestamps()
 	end

@@ -5,6 +5,7 @@ defmodule NookieBookie.Store.Category do
 	@primary_key {:id, :binary_id, autogenerate: true}
 	schema "budget_categories" do
 		field :name, :string
+		has_many :budget, NookieBookie.Store.Budget
 
 		timestamps()
 	end

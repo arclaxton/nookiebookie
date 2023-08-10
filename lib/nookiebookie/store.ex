@@ -4,7 +4,6 @@ defmodule NookieBookie.Store do
 	"""
 
 	import Ecto.Query, warn: false
- alias NookieBookie.Store.BudgetCategory
 	alias NookieBookie.Repo
 
 	alias NookieBookie.Store.Account
@@ -229,7 +228,8 @@ defmodule NookieBookie.Store do
 
 	def list_categories do
 		IO.inspect(Repo.all(Category))
-		Repo.all(Category)
+Repo.all(Category)
+|> Repo.preload(budget: :budget)
 	end
 
 	alias NookieBookie.Store.Budget
@@ -238,7 +238,7 @@ defmodule NookieBookie.Store do
 		Repo.insert(%Budget{
 			year: year,
 			month: month,
-			budget_category_id: category,
+			category_id: category,
 			total: total
 		})
 	end
@@ -253,5 +253,6 @@ defmodule NookieBookie.Store do
 			where: b.month == ^month,
 			select: b
 		Repo.all(query)
+      |> Repo.preload(budget_categories: :budget_category)
 	end
 end
