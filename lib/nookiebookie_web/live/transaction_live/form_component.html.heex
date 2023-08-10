@@ -1,40 +1,40 @@
 <div>
-  <h2><%= @title %></h2>
+	<h2><%= @title %></h2>
 
-  <.form
-    let={f}
-    for={@changeset}
-    id="transaction-form"
-    phx-target={@myself}
-    phx-change="validate"
-    phx-submit="save">
-  
-    <%= label f, :account %>
-    <%= number_input f, :account %>
-    <%= error_tag f, :account %>
-  
-    <%= label f, :amount %>
-    <%= number_input f, :amount, step: "any" %>
-    <%= error_tag f, :amount %>
-  
-    <%= label f, :transfer %>
-    <%= checkbox f, :transfer %>
-    <%= error_tag f, :transfer %>
-  
-    <%= label f, :merchant %>
-    <%= text_input f, :merchant %>
-    <%= error_tag f, :merchant %>
-  
-    <%= label f, :category %>
-    <%= text_input f, :category %>
-    <%= error_tag f, :category %>
-  
-    <%= label f, :budget_allocation %>
-    <%= number_input f, :budget_allocation %>
-    <%= error_tag f, :budget_allocation %>
-  
-    <div>
-      <%= submit "Save", phx_disable_with: "Saving..." %>
-    </div>
-  </.form>
+	<.form
+		let={f}
+		for={@changeset}
+		id="transaction-form"
+		phx-target={@myself}
+		phx-change="validate"
+		phx-submit="save">
+	
+		<%= label f, :account %>
+		<%= number_input f, :account %>
+		<%= error_tag f, :account %>
+	
+		<%= label f, :amount %>
+		<%= number_input f, :amount, step: "any" %>
+		<%= error_tag f, :amount %>
+	
+		<%= label f, :transfer %>
+		<%= checkbox f, :transfer %>
+		<%= error_tag f, :transfer %>
+	
+		<%= label f, :merchant %>
+		<%= text_input f, :merchant %>
+		<%= error_tag f, :merchant %>
+	
+		<%= label f, :category %>
+		<%= text_input f, :category %>
+		<%= error_tag f, :category %>
+	
+		<%= label f, :budget_allocation %>
+		<%= number_input f, :budget_allocation %>
+		<%= error_tag f, :budget_allocation %>
+	
+		<div>
+			<%= submit "Save", phx_disable_with: "Saving..." %>
+		</div>
+	</.form>
 </div>

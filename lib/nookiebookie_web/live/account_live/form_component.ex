@@ -1,55 +1,57 @@
 defmodule NookieBookieWeb.AccountLive.FormComponent do
-  use NookieBookieWeb, :live_component
+	use NookieBookieWeb, :live_component
 
-  alias NookieBookie.Store
+	alias NookieBookie.Store
 
-  @impl true
-  def update(%{account: account} = assigns, socket) do
-    changeset = Store.change_account(account)
+	@impl true
+	def update(%{account: account} = assigns, socket) do
+		changeset = Store.change_account(account)
 
-    {:ok,
-     socket
-     |> assign(assigns)
-     |> assign(:changeset, changeset)}
-  end
+		{:ok,
+		 socket
+		 |> assign(assigns)
+		 |> assign(:changeset, changeset)}
+	end
 
-  @impl true
-  def handle_event("validate", %{"account" => account_params}, socket) do
-    changeset =
-      socket.assigns.account
-      |> Store.change_account(account_params)
-      |> Map.put(:action, :validate)
+	@impl true
+	def handle_event("validate", %{"account" => account_params}, socket) do
+		changeset =
+			socket.assigns.account
+			|> Store.change_account(account_params)
+			|> Map.put(:action, :validate)
 
-    {:noreply, assign(socket, :changeset, changeset)}
-  end
+		{:noreply, assign(socket, :changeset, changeset)}
+	end
 
-  def handle_event("save", %{"account" => account_params}, socket) do
-    save_account(socket, socket.assigns.action, account_params)
-  end
+	def handle_event("save", %{"account" => account_params}, socket) do
+		save_account(socket, socket.assigns.action, account_params)
+	end
 
-  defp save_account(socket, :edit, account_params) do
-    case Store.update_account(socket.assigns.account, account_params) do
-      {:ok, _account} ->
-        {:noreply,
-         socket
-         |> put_flash(:info, "Account updated successfully")
-         |> push_redirect(to: socket.assigns.return_to)}
+	defp save_account(socket, :edit, account_params) do
+		case Store.update_account(socket.assigns.account, account_params) do
+			{:ok, _account} ->
+				{:noreply,
+					socket
+					|> put_flash(:info, "Account updated successfully")
+					|> push_redirect(to: socket.assigns.return_to)
+				}
+			{:error, %Ecto.Changeset{} = changeset} -> # log error then return
+				{:noreply, assign(socket, :changeset, changeset |> IO.inspect)}
+		end
+	end
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        {:noreply, assign(socket, :changeset, changeset)}
-    end
-  end
+	defp save_account(socket, :new, account_params) do
+		IO.puts("save account")
+		IO.inspect(account_params)
+		case Store.create_account(account_params) do
+			{:ok, _account} ->
+				{:noreply,
+				 socket
+				 |> put_flash(:info, "Account created successfully")
+				 |> push_redirect(to: socket.assigns.return_to)}
 
-  defp save_account(socket, :new, account_params) do
-    case Store.create_account(account_params) do
-      {:ok, _account} ->
-        {:noreply,
-         socket
-         |> put_flash(:info, "Account created successfully")
-         |> push_redirect(to: socket.assigns.return_to)}
-
-      {:error, %Ecto.Changeset{} = changeset} ->
-        {:noreply, assign(socket, changeset: changeset)}
-    end
-  end
+			{:error, %Ecto.Changeset{} = changeset} ->
+				{:noreply, assign(socket |> IO.inspect, changeset: changeset)}
+		end
+	end
 end
