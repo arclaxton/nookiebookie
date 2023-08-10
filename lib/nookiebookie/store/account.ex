@@ -20,7 +20,7 @@ defmodule NookieBookie.Store.Account do
 	def changeset(account, attrs) do
 		account
 		|> cast(attrs, [:name, :owner, :plaid_id])
-		|> validate_required([:name, :owner, :plaid_id])
+		|> validate_required([:name, :owner])
 		|> unique_constraint(:plaid_id)
 	end
 end
