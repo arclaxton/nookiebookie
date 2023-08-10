@@ -1,3 +1,15 @@
+<%= if @live_action in [:new, :edit] do %>
+  <.modal return_to={Routes.transaction_transactions_path(@socket, :index)}>
+    <.live_component
+      module={NookieBookieWeb.AccountLive.FormComponent}
+      id={@account.id || :new}
+      title={@page_title}
+      action={@live_action}
+      account={@account}
+      return_to={Routes.transaction_transactions_path(@socket, :index)}
+    />
+  </.modal>
+<% end %>
 <div id="accounts">
 	<%= for account <- @accounts do %>
 	<div id={"account-#{account.id}"} class="account-item">

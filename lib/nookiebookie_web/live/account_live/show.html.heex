@@ -32,5 +32,5 @@
 
 </ul>
 
-<span><%= live_patch "Edit", to: Routes.account_show_path(@socket, :edit, @account), class: "button" %></span> |
+<span><%= live_patch "Edit", to: Routes.account_index_path(@socket, :edit, @account), class: "button" %></span> |
 <span><%= live_redirect "Back", to: Routes.account_index_path(@socket, :index) %></span>

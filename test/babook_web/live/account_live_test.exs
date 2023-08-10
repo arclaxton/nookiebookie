@@ -79,19 +79,19 @@ defmodule NookieBookieWeb.AccountLiveTest do
     setup [:create_account]
 
     test "displays account", %{conn: conn, account: account} do
-      {:ok, _show_live, html} = live(conn, Routes.account_show_path(conn, :show, account))
+      {:ok, _show_live, html} = live(conn, Routes.account_index_path(conn, :show, account))
 
       assert html =~ "Show Account"
       assert html =~ account.name
     end
 
     test "updates account within modal", %{conn: conn, account: account} do
-      {:ok, show_live, _html} = live(conn, Routes.account_show_path(conn, :show, account))
+      {:ok, show_live, _html} = live(conn, Routes.account_index_path(conn, :show, account))
 
       assert show_live |> element("a", "Edit") |> render_click() =~
                "Edit Account"
 
-      assert_patch(show_live, Routes.account_show_path(conn, :edit, account))
+      assert_patch(show_live, Routes.account_index_path(conn, :edit, account))
 
       assert show_live
              |> form("#account-form", account: @invalid_attrs)
@@ -101,7 +101,7 @@ defmodule NookieBookieWeb.AccountLiveTest do
         show_live
         |> form("#account-form", account: @update_attrs)
         |> render_submit()
-        |> follow_redirect(conn, Routes.account_show_path(conn, :show, account))
+        |> follow_redirect(conn, Routes.account_index_path(conn, :show, account))
 
       assert html =~ "Account updated successfully"
       assert html =~ "some updated name"

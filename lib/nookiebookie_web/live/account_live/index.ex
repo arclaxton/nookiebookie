@@ -40,6 +40,13 @@ defmodule NookieBookieWeb.AccountLive.Index do
 		{:noreply, assign(socket, :accounts, list_accounts())}
 	end
 
+	def handle_event("save", %{"id" => id}, socket) do
+		account = Store.get_account!(id)
+		{:ok, _} = Store.delete_account(account)
+
+		{:noreply, assign(socket, :accounts, list_accounts())}
+	end
+
 	defp list_accounts do
 		Store.list_accounts()
 	end

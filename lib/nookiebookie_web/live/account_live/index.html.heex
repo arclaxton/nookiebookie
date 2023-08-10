@@ -31,7 +31,7 @@
         <td><%= account.plaid_id %></td>
 
         <td>
-          <span><%= live_redirect "Show", to: Routes.account_show_path(@socket, :show, account) %></span>
+          <span><%= live_redirect "Show", to: Routes.account_index_path(@socket, :show, account) %></span>
           <span><%= live_patch "Edit", to: Routes.account_index_path(@socket, :edit, account) %></span>
           <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: account.id, data: [confirm: "Are you sure?"] %></span>
         </td>
