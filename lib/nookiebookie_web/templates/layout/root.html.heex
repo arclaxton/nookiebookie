@@ -30,101 +30,107 @@
 			<%= @inner_content %>
 		</div>
 	</body>
-<style>
-	:root {
-		--nord0: #2e3440;
-		--nord1: #3b4252;
-		--nord2: #434c5e;
-		--nord3: #4c566a;
-		--nord4: #d8dee9;
-		--nord5: #e5e9f0;
-		--nord6: #eceff4;
-		--nord7: #8fbcbb;
-		--nord8: #88c0d0;
-		--nord9: #81a1c1;
-		--nord10: #5e81ac;
-		--nord11: #bf616a;
-		--nord12: #d08770;
-		--nord13: #ebcb8b;
-		--nord14: #a3be8c;
-		--nord15: #b48ead;
-		margin: 0;
-		padding: 0;
-		text-align: center;
-		font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-		font-weight: lighter;
-	}
-	#sidebar {
-		height: 100%;
-		width: 15%;
-		position: fixed;
-		z-index: 1;
-		background-color: var(--nord1);
-	}
-	#inner_content {
-		width: 100%;
-		margin-left: 15%;
-		padding: 0;
-		width: 85%;
-	}
-	h1 {
-		align-self: center;
-		color: var(--nord4);
-		margin: 0;
-		font-weight: lighter;
-	}
-	body {
-		background-color: var(--nord2);
-		overflow: hidden;
-		height: 100vh;
-	}
-	#inner_content {
-		overflow: hidden;
-		scrollbar-color: var(--nord1));
-	}
-	header {
-		background-color: var(--nord0);
-	}
-	div {
-		color: var(--nord6);
-	}
-	#modal-content {
-		background-color:	 var(--nord3);
-	}
-	button[type='submit'] {
-		background-color: var(--nord7);
-	}
-	.phx-modal-close {
-		color: var(--nord4);
-	}
-	::-webkit-scrollbar {
-		width: 7px;
-	}
-	::-webkit-scrollbar-track {
-		background-color: var(--nord3);
-	}
-	::-webkit-scrollbar-thumb {
-		background-color: var(--nord0);
-		border-radius: 100px;
-		border: 1px solid var(--nord3);
-	}
-	.edit {
-		color: var(--nord13);
-	}
-	.delete {
-		color: var(--nord11);
-	}
-	.invalid-feedback {
-		color: var(--nord12);
-	}
-	a {
-		color: var(--nord10);
-	}
-	td, th {
-		text-align: center;
-	}
-	input {
-		color: var(--nord5);
-	}
-</style>
+	<style>
+		:root {
+			--nord0: #2e3440;
+			--nord1: #3b4252;
+			--nord2: #434c5e;
+			--nord3: #4c566a;
+			--nord4: #d8dee9;
+			--nord5: #e5e9f0;
+			--nord6: #eceff4;
+			--nord7: #8fbcbb;
+			--nord8: #88c0d0;
+			--nord9: #81a1c1;
+			--nord10: #5e81ac;
+			--nord11: #bf616a;
+			--nord12: #d08770;
+			--nord13: #ebcb8b;
+			--nord14: #a3be8c;
+			--nord15: #b48ead;
+			margin: 0;
+			padding: 0;
+			text-align: center;
+			font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+			font-weight: lighter;
+		}
+		#sidebar {
+			height: 100%;
+			width: 15%;
+			position: fixed;
+			z-index: 1;
+			background-color: var(--nord1);
+		}
+		#inner_content {
+			width: 100%;
+			margin-left: 15%;
+			padding: 0;
+			width: 85%;
+		}
+		h1 {
+			align-self: center;
+			color: var(--nord4);
+			margin: 0;
+			font-weight: lighter;
+		}
+		body {
+			background-color: var(--nord2);
+			overflow: hidden;
+			height: 100vh;
+		}
+		#inner_content {
+			overflow: hidden;
+			scrollbar-color: var(--nord1);
+		}
+		header {
+			background-color: var(--nord0);
+		}
+		div {
+			color: var(--nord6);
+		}
+		#modal-content {
+			background-color:	 var(--nord3);
+		}
+		button.save {
+			background-color: var(--nord7);
+		}
+		.phx-modal-close {
+			color: var(--nord4);
+		}
+		::-webkit-scrollbar {
+			width: 7px;
+		}
+		::-webkit-scrollbar-track {
+			background-color: var(--nord3);
+		}
+		::-webkit-scrollbar-thumb {
+			background-color: var(--nord0);
+			border-radius: 100px;
+			border: 1px solid var(--nord3);
+		}
+		.edit {
+			color: var(--nord13);
+		}
+		button.delete {
+			background: var(--nord11);
+		}
+		a.delete {
+			color: var(--nord11);
+		}
+		a.edit {
+			color: var(--nord13);
+		}
+		.invalid-feedback {
+			color: var(--nord12);
+		}
+		a {
+			color: var(--nord10);
+		}
+		td, th {
+			text-align: center;
+		}
+		input {
+			color: var(--nord5);
+		}
+	</style>
 </html>
