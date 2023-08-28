@@ -30,19 +30,22 @@ defmodule NookieBookieWeb.Router do
 		live "/accounts", AccountLive.Index, :index
 		live "/accounts/new", AccountLive.Index, :new
 		live "/accounts/:id/edit", AccountLive.Index, :edit
+		live "/accounts/:id/", AccountLive.Index, :show
 
 		live "/transactions/:id", TransactionLive.Show, :show
 		live "/transactions/:id/show/edit", TransactionLive.Show, :edit
 
-		live "/accounts/:id", AccountLive.Show, :show
-		live "/accounts/:id/show/edit", AccountLive.Show, :edit
-		
 	end
 
 	# Other scopes may use custom stacks.
-	# scope "/api", NookieBookieWeb do
-	#   pipe_through :api
-	# end
+	scope "/api", NookieBookieWeb do
+		pipe_through :api
+		# Plaid-link
+		get "/create_link_token", PlaidController, :create_link_token
+		post "/exchange_public_token", PlaidController, :exchange_public_token
+		get "/data", PlaidController, :get_data
+		get "/is_account_connected", PlaidController, :is_account_connected
+	end
 
 	# Enables LiveDashboard only for development
 	#

@@ -3,29 +3,11 @@ defmodule NookieBookieWeb.AccountLive.Sidebar do
 
 	alias NookieBookie.Store
 	# alias NookieBookie.Store.Account
-# 
+
 	@impl true
 	def mount(_params, _session, socket) do
 		{:ok, assign(socket, :accounts, list_accounts())}
 	end
-
-	# defp apply_action(socket, :edit, %{"id" => id}) do
-	# 	socket
-	# 	|> assign(:page_title, "Edit Account")
-	# 	|> assign(:account, Store.get_account!(id))
-	# end
-
-	# defp apply_action(socket, :new, _params) do
-	# 	socket
-	# 	|> assign(:page_title, "New Account")
-	# 	|> assign(:account, %Account{})
-	# end
-
-	# defp apply_action(socket, :index, _params) do
-	# 	socket
-	# 	|> assign(:page_title, "Listing Accounts")
-	# 	|> assign(:account, nil)
-	# end
 
 	@impl true
 	def handle_event("delete", %{"id" => id}, socket) do
@@ -33,6 +15,14 @@ defmodule NookieBookieWeb.AccountLive.Sidebar do
 		{:ok, _} = Store.delete_account(account)
 
 		{:noreply, assign(socket, :accounts, list_accounts())}
+	end
+
+	def handle_event("edit", %{"id" => id}, socket) do
+		{:noreply, assign(socket, edit_account: id)}
+	end
+
+	def handle_event("new", socket) do
+		{:noreply, assign(socket, add_account: true)}
 	end
 
 	defp list_accounts do

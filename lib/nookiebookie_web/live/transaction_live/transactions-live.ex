@@ -54,6 +54,8 @@ defmodule NookieBookieWeb.TransactionLive.Transactions do
 		{:noreply, assign(socket, :transactions, Store.list_transactions())}
 	end
 
+	# transaction deleted externally
+	# TODO just pop id locally
 	@impl true
 	def handle_info(%{event: "deleted", payload: _id}, socket) do
 		# transaction = Store.get_transaction!(id)
@@ -62,8 +64,11 @@ defmodule NookieBookieWeb.TransactionLive.Transactions do
 		{:noreply, assign(socket, :transactions, Store.list_transactions())}
 	end
 
+	# transaction updated externally
+	# TODO update local transaction
 	@impl true
 	def handle_info(%{event: "updated", payload: _transaction}, socket) do
+
 		{:noreply, assign(socket, :transactions, Store.list_transactions())}
 	end
 

@@ -53,6 +53,8 @@ defmodule NookieBookie.MixProject do
 			{:httpoison, "~> 2.0"},
 			{:poison, "~> 5.0"},
 			{:timex, "~> 3.0"},
+			{:porcelain, "~>2.0"},
+			{:plaid, "~> 3.0", hex: :plaid_elixir},
 		]
 	end
 
